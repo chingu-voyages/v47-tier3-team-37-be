@@ -1,28 +1,54 @@
-# voyage-tasks
+# Cornell Notes Backend
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+[![Build Status](https://travis-ci.org/your-username/Cornell-Notes-Backend.svg?branch=main)](https://travis-ci.org/your-username/Cornell-Notes-Backend)
+[![Java Version](https://img.shields.io/badge/java-21-blue.svg)](https://openjdk.java.net/projects/jdk/21/)
+[![Spring Boot Version](https://img.shields.io/badge/spring--boot-3.2.1-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Flyway Version](https://img.shields.io/badge/flyway-7.0.0-brightgreen.svg)](https://flywaydb.org/)
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+## Description
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+This project serves as the backend for the Chingu Voyages collaborative note-taking application. It is built using Java, Spring Boot, Spring Data JPA, Postgre and Flyway for database migrations.
 
-> Own it & Make it your Own!
+## Prerequisites
 
-## Team Documents
+- Java 21
+- PostgreSQL (for local development)
 
-You may find these helpful as you work together to organize your project.
+## Getting Started
 
-- [Team Project Ideas](./docs/team_project_ideas.md)
-- [Team Decision Log](./docs/team_decision_log.md)
+1. **Clone the repository:**
 
-Meeting Agenda templates (located in the `/docs` directory in this repo):
+   ```bash
+   git clone https://github.com/your-username/Cornell-Notes-Backend.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd Cornell-Notes-Backend
+   ```
+3. **create Database**
+   If you already have psql installed can be done in terminal with
+   ```bash
+   createdb <database name>
+   ```
+4. **setupe application-dev.properties**
+   In order for spring-boot to connect to your database you will need to add a file application-dev.properties in `src/main/resources/`
+   in this file will need the following properties to be added and updated to with your information
+   ```bash
+   DATABASE=jdbc:postgresql://localhost:5432/<database name>
+   USERNAME=<your username>
+   PASSWORD=<your password>
+   ```
+   double check that application-dev.properties is in you gitignore file before pushing anything to git
 
-- Meeting - Voyage Kickoff --> ./docs/meeting-voyage_kickoff.docx
-- Meeting - App Vision & Feature Planning --> ./docs/meeting-vision_and_feature_planning.docx
-- Meeting - Sprint Retrospective, Review, and Planning --> ./docs/meeting-sprint_retrospective_review_and_planning.docx
-- Meeting - Sprint Open Topic Session --> ./docs/meeting-sprint_open_topic_session.docx
+5. **Build and run the application:**
+   ```bash
+    ./mvnw spring-boot:run
+   ```
+   The application will be accessible at http://localhost:8080.
+
+
+4. **Database Migrations**
+  
+   The project uses Flyway for database migrations. and when run will check for any new migrations and run them if need be
+   eventually will be able to use flyway to help handle the database outside of the  springboot app but still using mvn
+>>>>>>> initialSetup
