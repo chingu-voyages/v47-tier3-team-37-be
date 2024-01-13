@@ -30,7 +30,7 @@ This project serves as the backend for the Chingu Voyages collaborative note-tak
    ```bash
    createdb <database name>
    ```
-4. **setupe application-dev.properties**
+4. **setup application-dev.properties**
    In order for spring-boot to connect to your database you will need to add a file application-dev.properties in `src/main/resources/`
    in this file will need the following properties to be added and updated to with your information
    ```bash
@@ -39,16 +39,24 @@ This project serves as the backend for the Chingu Voyages collaborative note-tak
    PASSWORD=<your password>
    ```
    double check that application-dev.properties is in you gitignore file before pushing anything to git
+5. **setup flyway.properties**
+   To utilize flyway in the command line for purposes like `mvn flyway:migrate`, `mvn flyway:clean`, or `mvnflyway:info`
+   need to create a flyway.properties file at root of the project(same folder pom.xml is in) Inside this folder paste
+   and update the following
+   ```bash
+   flyway.url=jdbc:postgresql://localhost:5432/<database name.
+   flyway.user=<database username>
+   flyway.password=<database password>
+   ```
 
-5. **Build and run the application:**
+6. **Build and run the application:**
    ```bash
     ./mvnw spring-boot:run
    ```
    The application will be accessible at http://localhost:8080.
 
+7. **Database Migrations**
 
-4. **Database Migrations**
-  
    The project uses Flyway for database migrations. and when run will check for any new migrations and run them if need be
-   eventually will be able to use flyway to help handle the database outside of the  springboot app but still using mvn
->>>>>>> initialSetup
+   can also utilize the flway cmd line tool to manually run migration `mvn flyway:migrate`
+
