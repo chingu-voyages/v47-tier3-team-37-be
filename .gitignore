@@ -34,5 +34,4 @@ build/
 .vscode/
 
 application-dev.properties
-flyway.properties
 .metadata/

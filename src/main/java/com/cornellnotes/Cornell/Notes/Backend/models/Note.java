@@ -6,16 +6,7 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "notes")
@@ -25,14 +16,16 @@ public class Note {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idNote;
 	private String title;
+	@Column(columnDefinition = "TEXT")
 	private String content;
 	private Date dateCreated;
 	private Date dateModified;
+	@Column(columnDefinition = "TEXT")
 	private String summary;
 	@ManyToOne
 	@JoinColumn(name = "idUser")
 	private User user;
-	@OneToMany(mappedBy = "idQuestion", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "note", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<Question> questions;
 	
 	
