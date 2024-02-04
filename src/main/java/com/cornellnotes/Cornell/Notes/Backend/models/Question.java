@@ -14,6 +14,11 @@ import jakarta.persistence.Table;
 @Table(name = "Questions")
 public class Question {
 
+	public Question(String content){
+		this.content = content;
+	}
+	public Question(){}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idQuestion;
