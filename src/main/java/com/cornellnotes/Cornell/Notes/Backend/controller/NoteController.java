@@ -27,5 +27,11 @@ public class NoteController {
         return "Note Saved Successfully!";
     }
 
+    @DeleteMapping
+    public String deleteNote(@RequestBody Long id){
+        noteRepository.deleteById(id);
+        return "note with id " + id + " deleted";
+    }
+
 }
 
